@@ -1,0 +1,36 @@
+{
+    "manifest_version": 3,
+    "name": "Restore Link Card",
+    "short_name": "RestoreLinkCard",
+    "version": "1.0.0",
+    "description": "A browser extension to restore OGP link cards on Twitter (X).",
+    "host_permissions": [
+        "https://twitter.com/*",
+        "https://mobile.twitter.com/*",
+        "https://tweetdeck.twitter.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://twitter.com/*",
+                "https://mobile.twitter.com/*",
+                "https://tweetdeck.twitter.com/*"
+            ],
+            "js": [
+                "loader.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "main.js"
+            ],
+            "matches": [
+                "https://twitter.com/*",
+                "https://mobile.twitter.com/*",
+                "https://tweetdeck.twitter.com/*"
+            ]
+        }
+    ]
+}
