@@ -51,7 +51,8 @@
 
             const textContainer = document.createElement("div");
             textContainer.style.color = textColor;
-            textContainer.style.padding = "0.75rem";
+            textContainer.style.padding = "0.75rem 0.9rem 0.9rem 0.9rem";
+            textContainer.style.fontFamily = "'Segoe UI',Meiryo,system-ui,-apple-system,BlinkMacSystemFont,sans-serif";
 
             const domainElement = document.createElement("div");
             domainElement.textContent = reactProps.children.props.vanity || "Error";
@@ -60,7 +61,6 @@
 
             const titleElement = document.createElement("div");
             titleElement.textContent = reactProps.children.props.title.content || "Error";
-            titleElement.style.fontWeight = "bold";
             textContainer.appendChild(titleElement);
 
             anchor.appendChild(textContainer);
