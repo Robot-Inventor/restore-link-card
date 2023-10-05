@@ -23,14 +23,13 @@
     const observer = new MutationObserver(() => {
         const MARKER_CLASS_NAME = "restore-link-card-checked";
 
-        const linkCards = document.querySelectorAll(`[data-testid='card.layoutLarge.media']:not(.${MARKER_CLASS_NAME})`);
+        const linkCards = [...document.querySelectorAll(`[data-testid='card.layoutLarge.media']:not(.${MARKER_CLASS_NAME})`)].filter((card) => card.querySelector("img"));
 
-        linkCards.forEach((linkCard) => {
+        for (const linkCard of linkCards) {
             const reactProps = getReactProps(linkCard);
-            if (!reactProps) {
-                linkCard.classList.add(MARKER_CLASS_NAME);
-                return;
-            }
+            linkCard.classList.add(MARKER_CLASS_NAME);
+
+            if (!reactProps) return;
 
             const thumbnail = linkCard.querySelector("img");
             const anchor = linkCard.querySelector("a");
@@ -65,9 +64,7 @@
             textContainer.appendChild(titleElement);
 
             anchor.appendChild(textContainer);
-
-            linkCard.classList.add(MARKER_CLASS_NAME);
-        });
+        }
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
