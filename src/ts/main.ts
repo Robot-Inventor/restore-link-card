@@ -19,8 +19,10 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
     return reactPropsName.length ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
 };
 
+// eslint-disable-next-line max-lines-per-function
 const onNewTweet = async (tweet: Tweet): Promise<void> => {
     const linkCards = [
+        // eslint-disable-next-line no-extra-parens
         ...(await asyncQuerySelectorAll<HTMLElement>(`[data-testid='card.layoutLarge.media']`, tweet.element))
     ];
 
