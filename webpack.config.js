@@ -78,11 +78,11 @@ module.exports = {
                     to: "firefox/image/"
                 },
                 {
-                    from: "./LICENSE",
+                    from: "./*LICENSE",
                     to: "chrome/"
                 },
                 {
-                    from: "./LICENSE",
+                    from: "./*LICENSE",
                     to: "firefox/"
                 }
             ]
