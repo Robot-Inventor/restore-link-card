@@ -1,5 +1,5 @@
 import { Timeline, Tweet } from "twi-ext";
-import { asyncQuerySelector } from "async-query";
+import { asyncQuerySelector, asyncQuerySelectorAll } from "async-query";
 
 interface LinkCardProps {
     children: {
@@ -19,8 +19,12 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
     return reactPropsName.length ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
 };
 
-const onNewTweet = (tweet: Tweet): void => {
-    const linkCards = [...tweet.element.querySelectorAll<HTMLElement>(`[data-testid='card.layoutLarge.media']`)];
+// eslint-disable-next-line max-lines-per-function
+const onNewTweet = async (tweet: Tweet): Promise<void> => {
+    const linkCards = [
+        // eslint-disable-next-line no-extra-parens
+        ...(await asyncQuerySelectorAll<HTMLElement>(`[data-testid='card.layoutLarge.media']`, tweet.element))
+    ];
 
     for (const linkCard of linkCards) {
         const reactProps = getReactProps(linkCard);
