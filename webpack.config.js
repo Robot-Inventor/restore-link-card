@@ -68,14 +68,14 @@ module.exports = {
         new CopyFilePlugin({
             patterns: [
                 {
-                    context: "./src/image/",
+                    context: "./public/",
                     from: "**/*",
-                    to: "chrome/image/"
+                    to: "chrome/"
                 },
                 {
-                    context: "./src/image/",
+                    context: "./public/",
                     from: "**/*",
-                    to: "firefox/image/"
+                    to: "firefox/"
                 },
                 {
                     from: "./*LICENSE",
