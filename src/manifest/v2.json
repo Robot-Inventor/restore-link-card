@@ -9,17 +9,9 @@
     },
     "content_scripts": [
         {
-            "matches": [
-                "https://twitter.com/*",
-                "https://mobile.twitter.com/*",
-                "https://pro.twitter.com/*"
-            ],
-            "js": [
-                "js/loader.js"
-            ]
+            "matches": ["https://twitter.com/*", "https://mobile.twitter.com/*", "https://pro.twitter.com/*"],
+            "js": ["js/loader.js"]
         }
     ],
-    "web_accessible_resources": [
-        "js/main.js"
-    ]
+    "web_accessible_resources": ["js/main.js"]
 }
