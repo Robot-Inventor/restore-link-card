@@ -4,7 +4,7 @@ const CopyFilePlugin = require("copy-webpack-plugin");
 
 class RunCommandsPlugin {
     copyManifest(callback) {
-        exec("npx ts-node ./script/copyManifest.ts", (err, stdout, stderr) => {
+        exec("npx tsx ./script/copyManifest.ts", (err, stdout, stderr) => {
             if (err) {
                 console.error(`Error: ${err}`);
             } else {
