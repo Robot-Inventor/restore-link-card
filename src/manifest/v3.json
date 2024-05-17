@@ -7,17 +7,38 @@
     "icons": {
         "128": "image/icon.png"
     },
-    "host_permissions": ["https://twitter.com/*", "https://mobile.twitter.com/*", "https://pro.twitter.com/*"],
+    "host_permissions": [
+        "https://twitter.com/*",
+        "https://mobile.twitter.com/*",
+        "https://pro.twitter.com/*",
+        "https://x.com/*",
+        "https://mobile.x.com/*",
+        "https://pro.x.com/*"
+    ],
     "content_scripts": [
         {
-            "matches": ["https://twitter.com/*", "https://mobile.twitter.com/*", "https://pro.twitter.com/*"],
+            "matches": [
+                "https://twitter.com/*",
+                "https://mobile.twitter.com/*",
+                "https://pro.twitter.com/*",
+                "https://x.com/*",
+                "https://mobile.x.com/*",
+                "https://pro.x.com/*"
+            ],
             "js": ["js/loader.js"]
         }
     ],
     "web_accessible_resources": [
         {
             "resources": ["js/main.js"],
-            "matches": ["https://twitter.com/*", "https://mobile.twitter.com/*", "https://pro.twitter.com/*"]
+            "matches": [
+                "https://twitter.com/*",
+                "https://mobile.twitter.com/*",
+                "https://pro.twitter.com/*",
+                "https://x.com/*",
+                "https://mobile.x.com/*",
+                "https://pro.x.com/*"
+            ]
         }
     ]
 }
