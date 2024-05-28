@@ -36,7 +36,7 @@
     "prettier": "^3.2.5",
     "ts-loader": "^9.5.1",
     "tsx": "^4.10.1",
-    "twi-ext": "^0.8.0",
+    "twi-ext": "^0.9.0",
     "typescript": "^5.4.5",
     "web-ext": "^7.11.0",
     "webextension-polyfill": "^0.12.0",
