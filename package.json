@@ -1,6 +1,6 @@
 {
   "name": "restore-link-card",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "A browser extension to restore OGP link cards on Twitter (X)",
   "main": "main.js",
   "scripts": {
