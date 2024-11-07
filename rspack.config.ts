@@ -1,8 +1,8 @@
-import { CopyRspackPlugin, type Compiler } from "@rspack/core";
+import { type Compiler, CopyRspackPlugin } from "@rspack/core";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import { watch } from "chokidar";
 import { defineConfig } from "@rspack/cli";
 import { exec } from "child_process";
+import { watch } from "chokidar";
 
 class RunCommandsPlugin {
     private static copyManifest(callback?: () => void): void {
@@ -24,6 +24,7 @@ class RunCommandsPlugin {
         });
     }
 
+    // eslint-disable-next-line class-methods-use-this
     public apply(compiler: Compiler): void {
         let isWatchMode = false;
         let isFirstRun = true;
@@ -62,6 +63,7 @@ class RunCommandsPlugin {
 }
 
 const isProduction = process.env.NODE_ENV === "production";
+/* eslint-disable sort-keys*/
 const config = defineConfig({
     mode: isProduction ? "production" : "development",
     devtool: isProduction ? false : "source-map",
@@ -122,5 +124,6 @@ const config = defineConfig({
         new ForkTsCheckerWebpackPlugin()
     ]
 });
+/*eslint-enable sort-keys*/
 
 export default config;

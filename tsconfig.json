@@ -1,3 +1,11 @@
 {
-  "extends": "@robot-inventor/tsconfig-base/bundler.json"
+  "extends": "@robot-inventor/tsconfig-base/bundler.json",
+  "compilerOptions": {
+    "rootDir": "."
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./script/**/*.ts",
+    "./rspack.config.ts"
+  ]
 }
