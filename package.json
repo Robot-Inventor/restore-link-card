@@ -1,47 +1,47 @@
 {
-  "name": "restore-link-card",
-  "version": "2.2.2",
-  "description": "A browser extension to restore OGP link cards on Twitter (X)",
-  "main": "main.js",
-  "scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "format": "prettier --write ./src/**/*",
-    "format:check": "prettier --check ./src/**/*",
-    "lint": "eslint ./src/**/*.ts",
-    "package": "tsx ./script/package.ts",
-    "version": "npm run build && git add ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Robot-Inventor/restore-link-card.git"
-  },
-  "keywords": [
-    "twitter",
-    "extension"
-  ],
-  "author": "Robot-Inventor",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Robot-Inventor/restore-link-card/issues"
-  },
-  "homepage": "https://github.com/Robot-Inventor/restore-link-card#readme",
-  "devDependencies": {
-    "@robot-inventor/eslint-config": "^6.0.0",
-    "@robot-inventor/tsconfig-base": "^1.1.0",
-    "@types/webextension-polyfill": "^0.12.0",
-    "async-query": "^2.0.0",
-    "chokidar": "^4.0.0",
-    "copy-webpack-plugin": "^12.0.2",
-    "eslint": "^9.0.0",
-    "prettier": "^3.2.5",
-    "ts-loader": "^9.5.1",
-    "tsx": "^4.10.1",
-    "twi-ext": "^0.12.0",
-    "typescript": "^5.4.5",
-    "web-ext": "^8.0.0",
-    "webextension-polyfill": "^0.12.0",
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4"
-  }
+    "name": "restore-link-card",
+    "version": "2.2.2",
+    "description": "A browser extension to restore OGP link cards on Twitter (X)",
+    "main": "main.js",
+    "scripts": {
+        "build": "cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=production rspack build",
+        "watch": "cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=development rspack build --watch",
+        "format": "prettier --write ./src/**/*",
+        "format:check": "prettier --check ./src/**/*",
+        "lint": "eslint ./src/**/*.ts",
+        "package": "tsx ./script/package.ts",
+        "version": "npm run build && git add ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Robot-Inventor/restore-link-card.git"
+    },
+    "keywords": [
+        "twitter",
+        "extension"
+    ],
+    "author": "Robot-Inventor",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Robot-Inventor/restore-link-card/issues"
+    },
+    "homepage": "https://github.com/Robot-Inventor/restore-link-card#readme",
+    "devDependencies": {
+        "@robot-inventor/eslint-config": "^6.0.0",
+        "@robot-inventor/tsconfig-base": "^1.1.0",
+        "@rspack/cli": "^1.1.0",
+        "@rspack/core": "^1.1.0",
+        "@types/webextension-polyfill": "^0.12.0",
+        "async-query": "^2.0.0",
+        "chokidar": "^4.0.0",
+        "cross-env": "^7.0.3",
+        "eslint": "^9.0.0",
+        "fork-ts-checker-webpack-plugin": "^9.0.2",
+        "prettier": "^3.2.5",
+        "tsx": "^4.10.1",
+        "twi-ext": "^0.12.0",
+        "typescript": "^5.4.5",
+        "web-ext": "^8.0.0",
+        "webextension-polyfill": "^0.12.0"
+    }
 }
