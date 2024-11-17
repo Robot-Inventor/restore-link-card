@@ -1,5 +1,6 @@
 import { Timeline, type Tweet } from "twi-ext";
 import { asyncQuerySelector, asyncQuerySelectorAll } from "async-query";
+import { isNonEmptyArray } from "@robot-inventor/ts-utils";
 
 interface LinkCardProps {
     children: {
@@ -16,7 +17,7 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
     const reactPropsName = Object.getOwnPropertyNames(element).filter((name) =>
         name.startsWith("__reactProps$")
     ) as Array<keyof typeof element>;
-    return reactPropsName.length ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
+    return isNonEmptyArray(reactPropsName) ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
 };
 
 // eslint-disable-next-line max-lines-per-function

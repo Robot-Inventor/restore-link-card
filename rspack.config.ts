@@ -62,7 +62,7 @@ class RunCommandsPlugin {
     }
 }
 
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = process.env["NODE_ENV"] === "production";
 /* eslint-disable sort-keys*/
 const config = defineConfig({
     mode: isProduction ? "production" : "development",
