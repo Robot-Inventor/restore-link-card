@@ -102,6 +102,16 @@ const config = defineConfig({
         new CopyRspackPlugin({
             patterns: [
                 {
+                    context: "./src/css/",
+                    from: "**/*",
+                    to: "chrome/css/"
+                },
+                {
+                    context: "./src/css/",
+                    from: "**/*",
+                    to: "firefox/css/"
+                },
+                {
                     context: "./public/",
                     from: "**/*",
                     to: "chrome/"

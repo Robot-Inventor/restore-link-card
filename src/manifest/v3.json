@@ -25,7 +25,8 @@
                 "https://mobile.x.com/*",
                 "https://pro.x.com/*"
             ],
-            "js": ["js/loader.js"]
+            "js": ["js/loader.js"],
+            "css": ["css/style.css"]
         }
     ],
     "web_accessible_resources": [
