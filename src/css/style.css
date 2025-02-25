@@ -1,0 +1,3 @@
+[data-testid="card.wrapper"]:has([data-testid="card.layoutLarge.media"]) + a {
+    display: none;
+}
