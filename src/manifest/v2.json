@@ -2,7 +2,6 @@
     "manifest_version": 2,
     "name": "Restore Link Card",
     "short_name": "RestoreLinkCard",
-    "version": "1.1.0",
     "description": "A browser extension to restore OGP link cards on Twitter (X).",
     "icons": {
         "128": "image/icon.png"
