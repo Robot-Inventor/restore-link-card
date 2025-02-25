@@ -20,7 +20,6 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
     return isNonEmptyArray(reactPropsName) ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
 };
 
-// eslint-disable-next-line max-lines-per-function
 const onNewTweet = async (tweet: Tweet): Promise<void> => {
     const linkCards = [
         ...(await asyncQuerySelectorAll<HTMLElement>(`[data-testid='card.layoutLarge.media']`, tweet.element))
@@ -42,13 +41,12 @@ const onNewTweet = async (tweet: Tweet): Promise<void> => {
                 element.remove();
             });
 
-            thumbnail.style.height = "auto";
             thumbnail.style.opacity = "1";
             thumbnail.style.position = "static";
+            thumbnail.style.aspectRatio = "1200 / 630";
+            thumbnail.style.objectFit = "cover";
 
             anchor.style.display = "block";
-            anchor.style.height = "max-content";
-            anchor.style.width = "100%";
 
             const userName = document.querySelector("[data-testid='User-Name'] span");
             if (!userName) return;
