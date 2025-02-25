@@ -1,4 +1,4 @@
-import { Timeline, type Tweet } from "twi-ext";
+import { Timeline, type Tweet, getColorScheme } from "twi-ext";
 import { asyncQuerySelector, asyncQuerySelectorAll } from "async-query";
 import { isNonEmptyArray } from "@robot-inventor/ts-utils";
 
@@ -20,7 +20,7 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
     return isNonEmptyArray(reactPropsName) ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
 };
 
-const onNewTweet = async (tweet: Tweet): Promise<void> => {
+const onNewTweet = async (tweet: Tweet, theme: "dark" | "light"): Promise<void> => {
     const linkCards = [
         ...(await asyncQuerySelectorAll<HTMLElement>(`[data-testid='card.layoutLarge.media']`, tweet.element))
     ];
@@ -48,22 +48,18 @@ const onNewTweet = async (tweet: Tweet): Promise<void> => {
 
             anchor.style.display = "block";
 
-            const userName = document.querySelector("[data-testid='User-Name'] span");
-            if (!userName) return;
-            const textColor = getComputedStyle(userName).color;
-
             const textContainer = document.createElement("div");
-            textContainer.style.color = textColor;
+            textContainer.style.color = theme === "dark" ? "white" : "black";
             textContainer.style.padding = "0.75rem 0.9rem 0.9rem 0.9rem";
             textContainer.style.fontFamily = "'Segoe UI',Meiryo,system-ui,-apple-system,BlinkMacSystemFont,sans-serif";
 
             const domainElement = document.createElement("div");
-            domainElement.textContent = reactProps.children.props.vanity || ("Error" as string);
+            domainElement.textContent = reactProps.children.props.vanity || "Error";
             domainElement.style.opacity = "0.5";
             textContainer.appendChild(domainElement);
 
             const titleElement = document.createElement("div");
-            titleElement.textContent = reactProps.children.props.title.content || ("Error" as string);
+            titleElement.textContent = reactProps.children.props.title.content || "Error";
             textContainer.appendChild(titleElement);
 
             anchor.appendChild(textContainer);
@@ -71,8 +67,13 @@ const onNewTweet = async (tweet: Tweet): Promise<void> => {
     }
 };
 
-const timeline = new Timeline();
+const main = (): void => {
+    const timeline = new Timeline();
 
-timeline.onNewTweet((tweet) => {
-    void onNewTweet(tweet);
-});
+    const theme = getColorScheme() === "light" ? "light" : "dark";
+    timeline.onNewTweet((tweet) => {
+        void onNewTweet(tweet, theme);
+    });
+};
+
+main();
