@@ -2,6 +2,7 @@
     "manifest_version": 3,
     "name": "Restore Link Card",
     "short_name": "RestoreLinkCard",
+    "version": "This field is synchronized with package.json",
     "description": "A browser extension to restore OGP link cards on Twitter (X).",
     "icons": {
         "128": "image/icon.png"
