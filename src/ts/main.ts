@@ -20,7 +20,7 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
     return isNonEmptyArray(reactPropsName) ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
 };
 
-const onNewTweet = async (tweet: Tweet, theme: "dark" | "light"): Promise<void> => {
+const onNewTweet = async (tweet: Tweet, colorScheme: "dark" | "light"): Promise<void> => {
     const linkCards = [
         ...(await asyncQuerySelectorAll<HTMLElement>(`[data-testid='card.layoutLarge.media']`, tweet.element))
     ];
@@ -49,7 +49,7 @@ const onNewTweet = async (tweet: Tweet, theme: "dark" | "light"): Promise<void> 
             anchor.style.display = "block";
 
             const textContainer = document.createElement("div");
-            textContainer.style.color = theme === "dark" ? "white" : "black";
+            textContainer.style.color = colorScheme === "dark" ? "white" : "black";
             textContainer.style.padding = "0.75rem 0.9rem 0.9rem 0.9rem";
             textContainer.style.fontFamily = "'Segoe UI',Meiryo,system-ui,-apple-system,BlinkMacSystemFont,sans-serif";
 
@@ -70,9 +70,9 @@ const onNewTweet = async (tweet: Tweet, theme: "dark" | "light"): Promise<void> 
 const main = (): void => {
     const timeline = new Timeline();
 
-    const theme = getColorScheme() === "light" ? "light" : "dark";
+    const colorScheme = getColorScheme() === "light" ? "light" : "dark";
     timeline.onNewTweet((tweet) => {
-        void onNewTweet(tweet, theme);
+        void onNewTweet(tweet, colorScheme);
     });
 };
 
