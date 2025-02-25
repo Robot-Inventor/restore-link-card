@@ -30,7 +30,11 @@ const onNewTweet = async (tweet: Tweet, colorScheme: "dark" | "light"): Promise<
         // eslint-disable-next-line no-continue
         if (!reactProps) continue;
 
-        const thumbnailPromise = asyncQuerySelector("img", linkCard);
+        // Prevent emojis included in the link card's title text from being retrieved due to rendering timing issues.
+        const thumbnailPromise = asyncQuerySelector<HTMLImageElement>(
+            "img:not([src^='https://abs-0.twimg.com/emoji'])",
+            linkCard
+        );
         const anchorPromise = asyncQuerySelector("a", linkCard);
         // eslint-disable-next-line max-statements
         void Promise.all([thumbnailPromise, anchorPromise]).then(([thumbnail, anchor]) => {
