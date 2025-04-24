@@ -6,7 +6,7 @@ import { watch } from "chokidar";
 
 class RunCommandsPlugin {
     private static copyManifest(callback?: () => void): void {
-        exec("npx tsx ./script/copyManifest.ts", (err, stdout) => {
+        exec("cross-env NODE_OPTIONS=--experimental-transform-types node ./script/copyManifest.ts", (err, stdout) => {
             // eslint-disable-next-line no-console
             console.log("Copying manifest files...");
             if (err) {
