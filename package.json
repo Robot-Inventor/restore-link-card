@@ -42,7 +42,7 @@
     "prettier": "^3.2.5",
     "twi-ext": "^0.15.0",
     "typescript": "^5.9.2",
-    "web-ext": "^8.8.0",
+    "web-ext": "^9.0.0",
     "webextension-polyfill": "^0.12.0"
   }
 }
