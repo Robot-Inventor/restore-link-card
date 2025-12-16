@@ -1,6 +1,8 @@
-import { Timeline, type Tweet, getColorScheme } from "twi-ext";
+import { type ColorScheme, Timeline, type Tweet, getColorScheme, onColorSchemeChange } from "twi-ext";
 import { asyncQuerySelector, asyncQuerySelectorAll } from "async-query";
 import { isNonEmptyArray } from "@robot-inventor/ts-utils";
+
+const textColorName = "--rlc-color";
 
 interface LinkCardProps {
     children: {
@@ -20,7 +22,7 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
     return isNonEmptyArray(reactPropsName) ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
 };
 
-const onNewTweet = async (tweet: Tweet, colorScheme: "dark" | "light"): Promise<void> => {
+const onNewTweet = async (tweet: Tweet): Promise<void> => {
     const linkCards = [
         ...(await asyncQuerySelectorAll<HTMLElement>(`[data-testid='card.layoutLarge.media']`, tweet.element))
     ];
@@ -53,7 +55,7 @@ const onNewTweet = async (tweet: Tweet, colorScheme: "dark" | "light"): Promise<
             anchor.style.display = "block";
 
             const textContainer = document.createElement("div");
-            textContainer.style.color = colorScheme === "dark" ? "white" : "black";
+            textContainer.style.color = `var(${textColorName})`;
             textContainer.style.padding = "0.75rem 0.9rem 0.9rem 0.9rem";
             textContainer.style.fontFamily = "'Segoe UI',Meiryo,system-ui,-apple-system,BlinkMacSystemFont,sans-serif";
 
@@ -71,12 +73,20 @@ const onNewTweet = async (tweet: Tweet, colorScheme: "dark" | "light"): Promise<
     }
 };
 
+const updateTextColor = (colorScheme: ColorScheme): void => {
+    const darkOrLight = colorScheme === "light" ? "light" : "dark";
+    document.body.style.setProperty(textColorName, darkOrLight === "dark" ? "white" : "black");
+};
+
 const main = (): void => {
     const timeline = new Timeline();
 
-    const colorScheme = getColorScheme() === "light" ? "light" : "dark";
+    const colorScheme = getColorScheme();
+    updateTextColor(colorScheme);
+    onColorSchemeChange(updateTextColor);
+
     timeline.onNewTweet((tweet) => {
-        void onNewTweet(tweet, colorScheme);
+        void onNewTweet(tweet);
     });
 };
 
