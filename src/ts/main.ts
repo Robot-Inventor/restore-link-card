@@ -19,6 +19,7 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
     const reactPropsName = Object.getOwnPropertyNames(element).filter((name) =>
         name.startsWith("__reactProps$")
     ) as Array<keyof typeof element>;
+    // eslint-disable-next-line @typescript-eslint/unbound-method
     return isNonEmptyArray(reactPropsName) ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
 };
 
