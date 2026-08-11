@@ -5,8 +5,8 @@
   "type": "module",
   "main": "main.js",
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=production rspack build",
-    "watch": "cross-env NODE_OPTIONS=--experimental-transform-types NODE_ENV=development rspack build --watch",
+    "build": "cross-env NODE_ENV=production rspack build",
+    "watch": "cross-env NODE_ENV=development rspack build --watch",
     "format": "prettier --write ./src/**/*",
     "format:check": "prettier --check ./src/**/*",
     "lint": "eslint ./src/**/*.ts ./script/**/*.ts ./rspack.config.ts",
