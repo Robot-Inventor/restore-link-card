@@ -29,7 +29,7 @@ const onNewTweet = async (tweet: Tweet): Promise<void> => {
 
     for (const linkCard of linkCards) {
         const reactProps = getReactProps(linkCard);
-        // eslint-disable-next-line no-continue
+        // oxlint-disable-next-line no-continue
         if (!reactProps) continue;
 
         // Prevent emojis included in the link card's title text from being retrieved due to rendering timing issues.
@@ -38,7 +38,7 @@ const onNewTweet = async (tweet: Tweet): Promise<void> => {
             linkCard
         );
         const anchorPromise = asyncQuerySelector("a", linkCard);
-        // eslint-disable-next-line max-statements
+        // oxlint-disable-next-line max-statements
         void Promise.all([thumbnailPromise, anchorPromise]).then(([thumbnail, anchor]) => {
             if (!(thumbnail && anchor)) return;
 
