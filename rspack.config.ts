@@ -12,15 +12,15 @@ import { watch } from "chokidar";
 class RunCommandsPlugin {
     private static copyManifest(callback?: () => void): void {
         exec("node ./script/copyManifest.ts", (err, stdout) => {
-            // eslint-disable-next-line no-console
+            // oxlint-disable-next-line no-console
             console.log("Copying manifest files...");
             if (err) {
-                // eslint-disable-next-line no-console
+                // oxlint-disable-next-line no-console
                 console.error(`Error: ${err.message}`);
             } else {
-                // eslint-disable-next-line no-console
+                // oxlint-disable-next-line no-console
                 console.log(stdout);
-                // eslint-disable-next-line no-console
+                // oxlint-disable-next-line no-console
                 console.log("Finished copying manifest files.");
                 if (callback) {
                     callback();
@@ -29,7 +29,7 @@ class RunCommandsPlugin {
         });
     }
 
-    // eslint-disable-next-line class-methods-use-this
+    // oxlint-disable-next-line class-methods-use-this
     public apply(compiler: Compiler): void {
         let isWatchMode = false;
         let isFirstRun = true;
@@ -47,7 +47,7 @@ class RunCommandsPlugin {
                 ignored: (pathString, stats) => Boolean(stats?.isFile() && !pathString.endsWith(".json"))
             });
             manifestWatcher.on("change", (pathString: string) => {
-                // eslint-disable-next-line no-console
+                // oxlint-disable-next-line no-console
                 console.log(`Manifest file changed: ${pathString}`);
                 RunCommandsPlugin.copyManifest();
             });
@@ -68,7 +68,7 @@ class RunCommandsPlugin {
 }
 
 const isProduction = process.env["NODE_ENV"] === "production";
-/* eslint-disable sort-keys*/
+/* oxlint-disable sort-keys*/
 const config = defineConfig({
     mode: isProduction ? "production" : "development",
     devtool: isProduction ? false : "source-map",
@@ -147,6 +147,6 @@ const config = defineConfig({
         new ForkTsCheckerWebpackPlugin()
     ]
 });
-/*eslint-enable sort-keys*/
+/*oxlint-enable sort-keys*/
 
 export default config;
