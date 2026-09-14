@@ -44,7 +44,7 @@ class RunCommandsPlugin {
             }
 
             manifestWatcher = watch("src/manifest/", {
-                ignored: (pathString, stats) => Boolean(stats && stats.isFile() && !pathString.endsWith(".json"))
+                ignored: (pathString, stats) => Boolean(stats?.isFile() && !pathString.endsWith(".json"))
             });
             manifestWatcher.on("change", (pathString: string) => {
                 // eslint-disable-next-line no-console
