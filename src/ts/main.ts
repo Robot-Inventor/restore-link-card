@@ -22,6 +22,7 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
     return isNonEmptyArray(reactPropsName) ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
 };
 
+// oxlint-disable-next-line max-lines-per-function
 const onNewTweet = async (tweet: Tweet): Promise<void> => {
     const linkCards = [
         ...(await asyncQuerySelectorAll<HTMLElement>(`[data-testid='card.layoutLarge.media']`, tweet.element))
@@ -58,6 +59,7 @@ const onNewTweet = async (tweet: Tweet): Promise<void> => {
             textContainer.style.color = `var(${textColorName})`;
             textContainer.style.padding = "0.75rem 0.9rem 0.9rem 0.9rem";
             textContainer.style.fontFamily = "'Segoe UI',Meiryo,system-ui,-apple-system,BlinkMacSystemFont,sans-serif";
+            textContainer.style.lineHeight = "normal";
 
             const domainElement = document.createElement("div");
             domainElement.textContent = reactProps.children.props.vanity || "Error";
