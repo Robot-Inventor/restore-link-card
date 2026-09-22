@@ -22,7 +22,6 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
     return isNonEmptyArray(reactPropsName) ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
 };
 
-// oxlint-disable-next-line max-lines-per-function
 const onNewTweet = async (tweet: Tweet): Promise<void> => {
     const linkCards = [
         ...(await asyncQuerySelectorAll<HTMLElement>(`[data-testid='card.layoutLarge.media']`, tweet.element))
