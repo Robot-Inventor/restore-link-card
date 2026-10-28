@@ -25,7 +25,7 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
 const onNewTweet = async (tweet: Tweet): Promise<void> => {
     const linkCards = [
         ...(await asyncQuerySelectorAll<HTMLElement>(`[data-testid='card.layoutLarge.media']`, tweet.element))
-    ];
+    ] as const;
 
     for (const linkCard of linkCards) {
         const reactProps = getReactProps(linkCard);
