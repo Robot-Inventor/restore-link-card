@@ -2,31 +2,31 @@
   "name": "restore-link-card",
   "version": "3.0.4",
   "description": "A browser extension to restore OGP link cards on Twitter (X)",
+  "keywords": [
+    "extension",
+    "twitter"
+  ],
+  "homepage": "https://github.com/Robot-Inventor/restore-link-card#readme",
+  "bugs": {
+    "url": "https://github.com/Robot-Inventor/restore-link-card/issues"
+  },
+  "license": "MIT",
+  "author": "Robot-Inventor",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robot-Inventor/restore-link-card.git"
+  },
   "type": "module",
   "main": "main.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production rspack build",
     "watch": "cross-env NODE_ENV=development rspack build --watch",
-    "format": "prettier --write ./src/**/*",
-    "format:check": "prettier --check ./src/**/*",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
     "lint": "oxlint ./src ./script ./rspack.config.ts",
     "package": "node ./script/package.ts",
     "version": "npm run build && git add ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Robot-Inventor/restore-link-card.git"
-  },
-  "keywords": [
-    "twitter",
-    "extension"
-  ],
-  "author": "Robot-Inventor",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Robot-Inventor/restore-link-card/issues"
-  },
-  "homepage": "https://github.com/Robot-Inventor/restore-link-card#readme",
   "devDependencies": {
     "@robot-inventor/oxlint-config": "^1.0.0",
     "@robot-inventor/ts-utils": "^0.8.0",
@@ -40,8 +40,8 @@
     "chokidar": "^6.0.0",
     "cross-env": "^10.0.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
+    "oxfmt": "^0.75.0",
     "oxlint": "^1.83.0",
-    "prettier": "^3.2.5",
     "twi-ext": "^1.0.0",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
     "web-ext": "^10.0.0",
