@@ -6,4 +6,5 @@ script.src = url;
 script.addEventListener("load", () => {
     script.remove();
 });
+
 document.body.appendChild(script);

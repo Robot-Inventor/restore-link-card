@@ -4,6 +4,7 @@ import {
     LightningCssMinimizerRspackPlugin,
     SwcJsMinimizerRspackPlugin
 } from "@rspack/core";
+// oxlint-disable-next-line roboin/logical-newline
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import { defineConfig } from "@rspack/cli";
 import { exec } from "child_process";
@@ -40,12 +41,14 @@ class RunCommandsPlugin {
 
             if (manifestWatcher) {
                 callback();
+
                 return;
             }
 
             manifestWatcher = watch("src/manifest/", {
                 ignored: (pathString, stats) => Boolean(stats?.isFile() && !pathString.endsWith(".json"))
             });
+
             manifestWatcher.on("change", (pathString: string) => {
                 // oxlint-disable-next-line no-console
                 console.log(`Manifest file changed: ${pathString}`);
@@ -149,4 +152,5 @@ const config = defineConfig({
 });
 /*oxlint-enable sort-keys*/
 
+// oxlint-disable-next-line roboin/logical-newline
 export default config;
