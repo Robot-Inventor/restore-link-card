@@ -23,7 +23,7 @@
     "watch": "cross-env NODE_ENV=development rspack build --watch",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
-    "lint": "oxlint ./src ./script ./rspack.config.ts",
+    "lint": "oxlint src script rspack.config.ts",
     "package": "node ./script/package.ts",
     "version": "npm run build && git add ."
   },

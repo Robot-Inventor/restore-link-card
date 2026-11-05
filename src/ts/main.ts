@@ -19,6 +19,7 @@ const getReactProps = (element: HTMLElement): LinkCardProps | null => {
     const reactPropsName = Object.getOwnPropertyNames(element).filter((name) =>
         name.startsWith("__reactProps$")
     ) as Array<keyof typeof element>;
+
     return isNonEmptyArray(reactPropsName) ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
 };
 
@@ -37,6 +38,7 @@ const onNewTweet = async (tweet: Tweet): Promise<void> => {
             "img:not([src^='https://abs-0.twimg.com/emoji'])",
             linkCard
         );
+
         const anchorPromise = asyncQuerySelector("a", linkCard);
         // oxlint-disable-next-line max-statements
         void Promise.all([thumbnailPromise, anchorPromise]).then(([thumbnail, anchor]) => {
