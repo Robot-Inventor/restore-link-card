@@ -4,7 +4,6 @@ import {
     LightningCssMinimizerRspackPlugin,
     SwcJsMinimizerRspackPlugin
 } from "@rspack/core";
-// oxlint-disable-next-line roboin/logical-newline
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import { defineConfig } from "@rspack/cli";
 import { exec } from "child_process";
