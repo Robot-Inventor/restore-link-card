@@ -24,8 +24,8 @@
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
     "lint": "oxlint src script rspack.config.ts",
-    "package": "node ./script/package.ts",
-    "version": "npm run build && git add ."
+    "package": "bun ./script/package.ts",
+    "version": "bun run build && git add ."
   },
   "devDependencies": {
     "@robot-inventor/oxlint-config": "^2.0.0",
