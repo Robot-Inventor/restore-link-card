@@ -1,6 +1,5 @@
 import { type ColorScheme, Timeline, type Tweet, getColorScheme, onColorSchemeChange } from "twi-ext";
 import { asyncQuerySelector, asyncQuerySelectorAll } from "async-query";
-import { isNonEmptyArray } from "@robot-inventor/ts-utils";
 
 const textColorName = "--rlc-color";
 
@@ -16,11 +15,11 @@ interface LinkCardProps {
 }
 
 const getReactProps = (element: HTMLElement): LinkCardProps | null => {
-    const reactPropsName = Object.getOwnPropertyNames(element).filter((name) =>
+    const [reactPropsName] = Object.getOwnPropertyNames(element).filter((name) =>
         name.startsWith("__reactProps$")
     ) as Array<keyof typeof element>;
 
-    return isNonEmptyArray(reactPropsName) ? (element[reactPropsName[0]] as unknown as LinkCardProps) : null;
+    return reactPropsName ? (element[reactPropsName] as unknown as LinkCardProps) : null;
 };
 
 const onNewTweet = async (tweet: Tweet): Promise<void> => {
